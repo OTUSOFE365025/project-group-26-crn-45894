@@ -39,8 +39,8 @@ actor Maintainer as M
 actor "Data Source Systems" as D
 
 rectangle AIDAP {
-  usecase "Ask Academic Questions" as UC1 #LightBlue
-  usecase "Receive Notifications" as UC2
+  usecase "UC-1: Ask Academic Questions" as UC1 #LightBlue
+  usecase "UC-2: Receive Notifications" as UC2
   usecase "Access Personalized Dashboard" as UC3
   usecase "Publish Course Material" as UC4
   usecase "Post Announcements" as UC5
@@ -64,17 +64,17 @@ D --> UC9
 
 ### Use Case Descriptions
 
-| Use Case                      | ID Reference  | Description                                                | Primary Actor       |
-| ----------------------------- | ------------- | ---------------------------------------------------------- | ------------------- |
-| Ask Academic Questions        | RS1, R1, R5   | Student queries AIDAP for schedule, grades, or exam dates. | Student             |
-| Receive Notifications         | RS2, RS13     | System sends alerts for announcements or due dates.        | Student             |
-| Access Personalized Dashboard | RS3, RS5      | Students view upcoming deadlines, grades, and events.      | Student             |
-| Publish Course Material       | RL1           | Lecturers upload or update course files via the assistant. | Lecturer            |
-| Post Announcements            | RL2, RS2      | Lecturers broadcast messages to students.                  | Lecturer            |
-| View Analytics                | RL3, RL6      | View attendance, grades, and engagement summaries.         | Lecturer            |
-| Manage Integrations           | RA1, RA2      | Admin configures LMS, registration, and calendar links.    | Administrator       |
-| Monitor & Deploy Updates      | RM1, RM2      | Maintainers monitor performance and deploy updates.        | Maintainer          |
-| Synchronize Data              | RD1, RD2, RD3 | Data from external systems synchronized periodically.      | Data Source Systems |
+| Use Case ID | Use Case                      | ID Reference  | Description                                                | Primary Actor       |
+| ----------- | ----------------------------- | ------------- | ---------------------------------------------------------- | ------------------- |
+| UC-1        | Ask Academic Questions        | RS1, R1, R5   | Student queries AIDAP for schedule, grades, or exam dates. | Student             |
+| UC-2        | Receive Notifications         | RS2, RS13     | System sends alerts for announcements or due dates.        | Student             |
+| UC-3        | Access Personalized Dashboard | RS3, RS5      | Students view upcoming deadlines, grades, and events.      | Student             |
+| UC-4        | Publish Course Material       | RL1           | Lecturers upload or update course files via the assistant. | Lecturer            |
+| UC-5        | Post Announcements            | RL2, RS2      | Lecturers broadcast messages to students.                  | Lecturer            |
+| UC-6        | View Analytics                | RL3, RL6      | View attendance, grades, and engagement summaries.         | Lecturer            |
+| UC-7        | Manage Integrations           | RA1, RA2      | Admin configures LMS, registration, and calendar links.    | Administrator       |
+| UC-8        | Monitor & Deploy Updates      | RM1, RM2      | Maintainers monitor performance and deploy updates.        | Maintainer          |
+| UC-9        | Synchronize Data              | RD1, RD2, RD3 | Data from external systems synchronized periodically.      | Data Source Systems |
 
 ---
 
