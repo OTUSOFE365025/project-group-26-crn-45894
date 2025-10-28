@@ -1,168 +1,111 @@
-```markdown
-Add the Use Cases to this file
+## Business Case
 
+The **AI-Powered Digital Assistant Platform (AIDAP)** is a conversational AI system designed to enhance access to academic and institutional information for students, lecturers, and administrators. The system integrates with existing university services such as the Learning Management System (LMS), registration databases, calendars, and email servers to provide contextual, personalized responses to queries.
+
+**Key goals:**
+
+- Improve information accessibility and reduce administrative overhead.
+- Deliver personalized insights (e.g., deadlines, grades, events) via chat or voice.
+- Support both web and mobile platforms with 99.5% availability.
+- Ensure compliance with institutional privacy and security standards.
+
+The business value lies in streamlining academic interactions, increasing operational efficiency, and improving the student and faculty experience through intelligent automation.
+
+---
+
+## Stakeholders and System Overview
+
+| Symbol | Stakeholder         | Description                                                              |
+| ------ | ------------------- | ------------------------------------------------------------------------ |
+| **S**  | Students            | End users who query academic and campus information.                     |
+| **L**  | Lecturers           | Provide course-related content and respond to academic queries.          |
+| **A**  | Administrators      | Maintain institutional data, integrations, and policies.                 |
+| **M**  | System Maintainer   | Responsible for deployment, monitoring, and upgrades.                    |
+| **D**  | Data Source Systems | External systems such as LMS, registration, calendar, and email servers. |
+
+---
+
+## Use Case Model
+
+### Use Case Diagram
+
+```plantuml
+@startuml
+left to right direction
+actor Student as S
+actor Lecturer as L
+actor Administrator as A
+actor Maintainer as M
+actor "Data Source Systems" as D
+
+rectangle AIDAP {
+  usecase "Ask Academic Questions" as UC1 #LightBlue
+  usecase "Receive Notifications" as UC2
+  usecase "Access Personalized Dashboard" as UC3
+  usecase "Publish Course Material" as UC4
+  usecase "Post Announcements" as UC5
+  usecase "View Analytics" as UC6
+  usecase "Manage Integrations" as UC7
+  usecase "Monitor & Deploy Updates" as UC8
+  usecase "Synchronize Data" as UC9
+}
+
+S --> UC1
+S --> UC2
+S --> UC3
+L --> UC4
+L --> UC5
+L --> UC6
+A --> UC7
+M --> UC8
+D --> UC9
+@enduml
 ```
-```markdown
-# Use Cases — AI‑Powered Digital Assistant Platform (AIDAP)
 
-Actors
-- Student (S)
-- Lecturer (L)
-- Administrator (A)
-- System Maintainer (M)
-- External Data Source (D)
+### Use Case Descriptions
 
-Primary Use Cases (detailed)
+| Use Case                      | ID Reference  | Description                                                | Primary Actor       |
+| ----------------------------- | ------------- | ---------------------------------------------------------- | ------------------- |
+| Ask Academic Questions        | RS1, R1, R5   | Student queries AIDAP for schedule, grades, or exam dates. | Student             |
+| Receive Notifications         | RS2, RS13     | System sends alerts for announcements or due dates.        | Student             |
+| Access Personalized Dashboard | RS3, RS5      | Students view upcoming deadlines, grades, and events.      | Student             |
+| Publish Course Material       | RL1           | Lecturers upload or update course files via the assistant. | Lecturer            |
+| Post Announcements            | RL2, RS2      | Lecturers broadcast messages to students.                  | Lecturer            |
+| View Analytics                | RL3, RL6      | View attendance, grades, and engagement summaries.         | Lecturer            |
+| Manage Integrations           | RA1, RA2      | Admin configures LMS, registration, and calendar links.    | Administrator       |
+| Monitor & Deploy Updates      | RM1, RM2      | Maintainers monitor performance and deploy updates.        | Maintainer          |
+| Synchronize Data              | RD1, RD2, RD3 | Data from external systems synchronized periodically.      | Data Source Systems |
 
-1. UC-QueryAcademicInfo
-- Actors: Student, Lecturer
-- Goal: Ask a natural-language academic or administrative question (e.g., "When is my next exam?")
-- Preconditions: User authenticated via institutional SSO
-- Main Flow:
-	1. User submits query (text or voice).
-	2. Frontend forwards request to API Gateway (auth check).
-	3. NLU/Intent service extracts intent and entities.
-	4. Planner determines data sources (live connectors or personal store).
-	5. Data fetched and assembled; retrieval augmented generation used if required.
-	6. Response produced and returned to user via chosen channel.
-	7. Interaction logged to personalization store.
-- Extensions:
-	- If external data unavailable → present best-effort response and schedule follow-up.
-	- If ambiguous intent → request disambiguation from user.
-- Postconditions: Interaction recorded for personalization and analytics.
-- Success guarantee: Relevant answer within SLA (RS10).
-- Mapped requirements: RS1, R1, R5, R6, RS10, RS11
+---
 
-2. UC-ReceiveNotifications
-- Actors: Student, Lecturer
-- Goal: Receive notifications for deadlines, schedule changes, announcements.
-- Main Flow:
-	1. Scheduler or lecturer-triggered event creates notification.
-	2. Notification service formats message according to user preferences.
-	3. Deliver via push, email, in-app, or voice channel.
-- Extensions: Delivery failure → retry/backoff; user unsubscribes → update preferences.
-- Mapped: RS2, RS6, RL4
+## Stakeholder Context Diagram
 
-3. UC-PersonalDashboard
-- Actors: Student
-- Goal: View personalized dashboard of upcoming events and performance indicators.
-- Main Flow:
-	1. User requests dashboard.
-	2. Aggregator fetches personalized data (calendar, grades, analytics).
-	3. Frontend renders dashboard; allows export to calendar (RS13).
-- Mapped: RS3, RS13
+```plantuml
+@startuml
+actor Student as S
+actor Lecturer as L
+actor Administrator as A
+actor Maintainer as M
+actor "External Systems" as D
 
-4. UC-PublishCourseMaterial
-- Actors: Lecturer
-- Goal: Publish or update course materials via UI or conversational command.
-- Main Flow:
-	1. Lecturer uploads/edits material.
-	2. System validates permissions (RBAC) and stores artifact.
-	3. Optionally notify students.
-- Mapped: RL1, RL2, RL8
+rectangle "AI-Powered Digital Assistant Platform (AIDAP)" {
+  [Conversational Interface]
+  [AI Query Processor]
+  [Personalization Engine]
+  [Data Integration Services]
+  [Monitoring Dashboard]
+}
 
-5. UC-AdminIntegrations
-- Actors: Administrator
-- Goal: Configure and manage external integrations (LMS, registration, calendar).
-- Main Flow:
-	1. Admin registers connector and credentials.
-	2. System validates and schedules synchronization.
-	3. Monitoring surfaces connector health.
-- Mapped: RA1, RD1, RD2, RA2
+S --> [Conversational Interface]
+L --> [Conversational Interface]
+A --> [Monitoring Dashboard]
+M --> [Monitoring Dashboard]
+[Conversational Interface] --> [AI Query Processor]
+[AI Query Processor] --> [Data Integration Services]
+[AI Query Processor] --> [Personalization Engine]
+[Data Integration Services] --> D
+@enduml
+```
 
-6. UC-ManageDeployments
-- Actors: System Maintainer
-- Goal: Deploy updates and manage AI model versions with zero downtime.
-- Main Flow:
+---
 
-	# Use Cases — AI‑Powered Digital Assistant Platform (AIDAP)
-
-	Actors
-	- Student (S)
-	- Lecturer (L)
-	- Administrator (A)
-	- System Maintainer (M)
-	- External Data Source (D)
-
-	Primary Use Cases (detailed)
-
-	1. UC-QueryAcademicInfo
-	- Actors: Student, Lecturer
-	- Goal: Ask a natural-language academic or administrative question (e.g., "When is my next exam?")
-	- Preconditions: User authenticated via institutional SSO
-	- Main Flow:
-	  1. User submits query (text or voice).
-	  2. Frontend forwards request to API Gateway (auth check).
-	  3. NLU/Intent service extracts intent and entities.
-	  4. Planner determines data sources (live connectors or personal store).
-	  5. Data fetched and assembled; retrieval augmented generation used if required.
-	  6. Response produced and returned to user via chosen channel.
-	  7. Interaction logged to personalization store.
-	- Extensions:
-	  - If external data unavailable → present best-effort response and schedule follow-up.
-	  - If ambiguous intent → request disambiguation from user.
-	- Postconditions: Interaction recorded for personalization and analytics.
-	- Success guarantee: Relevant answer within SLA (RS10).
-	- Mapped requirements: RS1, R1, R5, R6, RS10, RS11
-
-	2. UC-ReceiveNotifications
-	- Actors: Student, Lecturer
-	- Goal: Receive notifications for deadlines, schedule changes, announcements.
-	- Main Flow:
-	  1. Scheduler or lecturer-triggered event creates notification.
-	  2. Notification service formats message according to user preferences.
-	  3. Deliver via push, email, in-app, or voice channel.
-	- Extensions: Delivery failure → retry/backoff; user unsubscribes → update preferences.
-	- Mapped: RS2, RS6, RL4
-
-	3. UC-PersonalDashboard
-	- Actors: Student
-	- Goal: View personalized dashboard of upcoming events and performance indicators.
-	- Main Flow:
-	  1. User requests dashboard.
-	  2. Aggregator fetches personalized data (calendar, grades, analytics).
-	  3. Frontend renders dashboard; allows export to calendar (RS13).
-	- Mapped: RS3, RS13
-
-	4. UC-PublishCourseMaterial
-	- Actors: Lecturer
-	- Goal: Publish or update course materials via UI or conversational command.
-	- Main Flow:
-	  1. Lecturer uploads/edits material.
-	  2. System validates permissions (RBAC) and stores artifact.
-	  3. Optionally notify students.
-	- Mapped: RL1, RL2, RL8
-
-	5. UC-AdminIntegrations
-	- Actors: Administrator
-	- Goal: Configure and manage external integrations (LMS, registration, calendar).
-	- Main Flow:
-	  1. Admin registers connector and credentials.
-	  2. System validates and schedules synchronization.
-	  3. Monitoring surfaces connector health.
-	- Mapped: RA1, RD1, RD2, RA2
-
-	6. UC-ManageDeployments
-	- Actors: System Maintainer
-	- Goal: Deploy updates and manage AI model versions with zero downtime.
-	- Main Flow:
-	  1. Maintainer pushes new image/config.
-	  2. CI/CD pipeline performs rolling or blue/green deployment.
-	  3. Model routing supports version selection and rollback.
-	- Mapped: RM1, RM3
-
-	7. UC-AuthAndAccessControl
-	- Actors: All authenticated users
-	- Goal: Authenticate via SSO and enforce RBAC and per-user visibility.
-	- Main Flow:
-	  1. User authenticates using institutional SSO (OIDC/SAML).
-	  2. Token validated at gateway; RBAC enforced downstream.
-	- Mapped: RS7, RS8, RA5
-
-	Traceability sample
-	- UC-QueryAcademicInfo → RS1, R1, R5, RS10, RS11
-	- UC-ReceiveNotifications → RS2, RS6, RL4
-	- UC-AdminIntegrations → RA1, RD1, RD2
-
-	Notes
-	- Add UML use-case diagram artifact in /diagrams for Deliverable 1.
