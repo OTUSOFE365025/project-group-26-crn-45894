@@ -42,13 +42,13 @@ actor "Data Source Systems" as D
 rectangle AIDAP {
   usecase "UC-1: Ask Academic Questions" as UC1 #LightBlue
   usecase "UC-2: Receive Notifications" as UC2
-  usecase "Access Personalized Dashboard" as UC3
-  usecase "Publish Course Material" as UC4
-  usecase "Post Announcements" as UC5
-  usecase "View Analytics" as UC6
-  usecase "Manage Integrations" as UC7
-  usecase "Monitor & Deploy Updates" as UC8
-  usecase "Synchronize Data" as UC9
+  usecase "UC-3: Access Personalized Dashboard" as UC3
+  usecase "UC-4: Publish Course Material" as UC4
+  usecase "UC-5: Post Announcements" as UC5
+  usecase "UC-6: View Analytics" as UC6
+  usecase "UC-7: Manage Integrations" as UC7
+  usecase "UC-8: Monitor & Deploy Updates" as UC8
+  usecase "UC-9: Synchronize Data" as UC9
 }
 
 S --> UC1
@@ -81,7 +81,7 @@ D --> UC9
 
 ## Stakeholder Context Diagram
 
-
+![alt text](stakeholder_context_diagram.png)
 ```plantuml
 @startuml
 actor Student as S
