@@ -29,6 +29,7 @@ The business value lies in streamlining academic interactions, increasing operat
 
 ### Use Case Diagram
 
+![alt text](use_case_diagram.png)
 ```plantuml
 @startuml
 left to right direction
@@ -79,6 +80,7 @@ D --> UC9
 ---
 
 ## Stakeholder Context Diagram
+
 
 ```plantuml
 @startuml
