@@ -1,18 +1,4 @@
-## Quality Attributes
-
-| Attribute                     | Description                                     | Requirement ID | Example Measure/Scenario                                 |
-| ----------------------------- | ----------------------------------------------- | -------------- | -------------------------------------------------------- |
-| **Performance**               | Responses must be processed quickly.            | RS10           | Average response time ≤ 2s under normal load.            |
-| **Availability**              | Service must remain accessible.                 | RS11, RA6      | 99.5% uptime per month with failover.                    |
-| **Scalability**               | System must handle growth and spikes.           | RA7            | Up to 5,000 concurrent users.                            |
-| **Security**                  | Protect user data and ensure secure access.     | RS7, RA5, RM7  | Single sign-on (SSO), encryption, and role-based access. |
-| **Usability**                 | Interface must be intuitive and accessible.     | RS12           | Conversational UI meets accessibility standards.         |
-| **Modifiability**             | Easy integration of new AI models or APIs.      | RM5            | Modular microservice design.                             |
-| **Interoperability**          | Works with LMS, registration, and email.        | R3, RD2        | REST/GraphQL API interfaces.                             |
-| **Reliability**               | Handles network or service failures gracefully. | RD3            | Automatic retries and recovery.                          |
-| **Learnability/Adaptability** | Improves response relevance over time.          | RS5            | Adaptive AI model based on historical data.              |
-
-### Quality Attribute Scenarios
+## Quality Attribute Scenarios
 
 | ID      | Attribute     | Scenario                                                                                            | Associated Use Case |
 | ------- | ------------- | --------------------------------------------------------------------------------------------------- | ------------------- |
