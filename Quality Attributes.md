@@ -1,46 +1,26 @@
-# Quality Attributes — AIDAP (Deliverable 1)
-Overview
-This document prioritizes quality attributes and provides measurable scenarios and candidate tactics for each. These will be used as architectural drivers in ADD Iteration 1.
+## Quality Attributes
 
-1. Performance / Latency (High)
-- Target scenario: Under normal load (≤ 500 concurrent users) average response time for text queries ≤ 2s; 95th percentile ≤ 3.5s.
-- Tactics: caching recent responses, asynchronous fetches for slow connectors, warm model pools, edge CDN for static assets.
-- Linked requirements: RS10, R5, R6
+| Attribute                     | Description                                     | Requirement ID | Example Measure/Scenario                                 |
+| ----------------------------- | ----------------------------------------------- | -------------- | -------------------------------------------------------- |
+| **Performance**               | Responses must be processed quickly.            | RS10           | Average response time ≤ 2s under normal load.            |
+| **Availability**              | Service must remain accessible.                 | RS11, RA6      | 99.5% uptime per month with failover.                    |
+| **Scalability**               | System must handle growth and spikes.           | RA7            | Up to 5,000 concurrent users.                            |
+| **Security**                  | Protect user data and ensure secure access.     | RS7, RA5, RM7  | Single sign-on (SSO), encryption, and role-based access. |
+| **Usability**                 | Interface must be intuitive and accessible.     | RS12           | Conversational UI meets accessibility standards.         |
+| **Modifiability**             | Easy integration of new AI models or APIs.      | RM5            | Modular microservice design.                             |
+| **Interoperability**          | Works with LMS, registration, and email.        | R3, RD2        | REST/GraphQL API interfaces.                             |
+| **Reliability**               | Handles network or service failures gracefully. | RD3            | Automatic retries and recovery.                          |
+| **Learnability/Adaptability** | Improves response relevance over time.          | RS5            | Adaptive AI model based on historical data.              |
 
-2. Availability (High)
-- Target scenario: Monthly uptime ≥ 99.5% (excluding scheduled maintenance windows).
-- Tactics: multi-AZ deployments, health checks, autoscaling, automated failover, graceful degradation for non-critical features.
-- Linked: RS11, RA6
+### Quality Attribute Scenarios
 
-3. Scalability (High)
-- Target scenario: System supports up to 5,000 concurrent active users with autoscaling policies.
-- Tactics: stateless frontends, horizontally scalable microservices, autoscaling based on CPU/RPS/queue depth.
-- Linked: RA7
+| ID      | Attribute     | Scenario                                                                                            | Associated Use Case |
+| ------- | ------------- | --------------------------------------------------------------------------------------------------- | ------------------- |
+| **QA1** | Performance   | Under peak load (5,000 users), 95% of queries are answered within 2 seconds.                        | RS10                |
+| **QA2** | Availability  | During a service failure, system restores full operation within 60 seconds.                         | RA6                 |
+| **QA3** | Security      | Unauthorized users cannot access private student data; all access is logged.                        | RS7, RA5            |
+| **QA4** | Modifiability | Adding a new AI service requires no downtime.                                                       | RM1, RM5            |
+| **QA5** | Usability     | The chatbot UI can respond to a query in natural language and provide a clear menu of next options. | RS12                |
+| **QA6** | Reliability   | If LMS connection fails, AIDAP retries within 5 seconds and logs an alert.                          | RD3                 |
 
-4. Security & Privacy (High)
-- Target scenario: Only the authenticated user can view personal data; RBAC enforced; audit trail for access to sensitive data.
-- Tactics: OIDC/SAML SSO integration, RBAC, least privilege, encryption in transit and at rest, data masking and retention controls.
-- Linked: RS7, RS8, RA5, R8
-
-5. Reliability & Data Integrity (Medium)
-- Target scenario: Sync jobs are eventually consistent with failure-handling and idempotence; connector failures recover with retries.
-- Tactics: message queues, idempotent APIs, retry with exponential backoff, dead-letter queues, transactional writes where necessary.
-- Linked: RD1, RD3
-
-6. Modifiability / Extensibility (Medium)
-- Target scenario: Add a new external data source via a connector adapter within a single sprint.
-- Tactics: adapter/plugin architecture, well-defined connector contracts, API gateway, versioned APIs, feature flags.
-- Linked: RM5, RD2
-
-7. Observability (Medium)
-- Target scenario: Maintain dashboards for request latency, error rates, model accuracy, and sync health; alerts on SLO violations.
-- Tactics: centralized logging, metrics (Prometheus/Grafana), distributed tracing (OpenTelemetry), synthetic transactions.
-- Linked: RM2, RM4
-
-8. Usability & Accessibility (Medium)
-- Target scenario: Conversational UI follows best practices; supports multi-language input/output with language detection and fallback.
-- Tactics: UX patterns, i18n layer, language models or translation microservice, accessibility testing.
-- Linked: RS4, RS12
-
-Testing and acceptance
-- For each attribute define acceptance tests (load tests, chaos tests, penetration tests, localization checks) and target metrics in ADD Iteration 1.
+---
