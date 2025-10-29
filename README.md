@@ -6,8 +6,8 @@
 - Deliverables & schedule
 - Repository layout (Deliverable 1)
 - Business case
-- How to contribute
-- Next steps
+- System scope
+- Group 26
 
 ## Overview
 
