@@ -7,11 +7,6 @@ The **AI-Powered Digital Assistant Platform (AIDAP)** is a university-focused co
 ---
 
 ## Course Context
-
-**Course:** SOFE 3650 – Software Design & Architectures (Fall 2025)
-**Instructor:** Dr. Hani Sami
-**Student:** Ivan Arudpiragasam
-
 This project follows the **Attribute-Driven Design (ADD)** methodology to design a scalable, cloud-native, and AI-driven architecture. It will be developed through three deliverables:
 
 1. **Deliverable 1 – Requirements Analysis (Due Oct. 28, 2025)**

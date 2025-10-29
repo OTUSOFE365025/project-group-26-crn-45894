@@ -1,35 +1,16 @@
 # Architectural Concerns — AIDAP
 
-Concerns to guide ADD iterations and design decisions.
-
-1. Privacy & Data Access
-- Ensure strict per-user visibility rules, RBAC for lecturer/admin actions, audit logging, and data minimization.
-
-2. Integration Robustness
-- External systems (LMS, registration, calendar, email) may be flaky; connectors must handle retries, backoff, and circuit breaking.
-
-3. Latency vs Accuracy Trade-offs
-- Large models improve accuracy but increase latency/cost. Use hybrid retrieval+generation, caching, and model tiering.
-
-4. Scalability & Cost Management
-- Autoscaling must meet peak demand up to 5,000 concurrent users while controlling operational cost.
-
-5. Model Ops & Governance
-- Versioning, A/B testing, input/output logging for model evaluation, and safe rollback strategies are required.
-
-6. Observability & Alerting
-- Instrumentation for request traces, sync jobs, model latencies/accuracy, and SLO dashboards; alert on anomalies.
-
-7. Internationalization & Accessibility
-- Multi-language NLU/NLG with fallback; accessibility requirements for UI and voice.
-
-8. Offline & Mobile Experience
-- Client-side caching strategy, graceful degradation, and background sync for intermittent connectivity.
-
-9. Data Consistency & Conflict Resolution
-- Define eventual consistency policies for data synced from multiple sources and conflict resolution rules.
-
-10. Security & Compliance
-- Least-privilege access, secure credential handling for connectors, periodic compliance audits, and admin-configurable retention.
-
-For each concern, ADD Iteration 1 will list candidate tactics, component responsibilities, and trade-offs.
+| ID     | Concern                              | Description |
+|--------|--------------------------------------|-------------|
+| **CRN-1** | Establish overall system structure   | Define the initial high-level architecture (layers, services, data flow) to de-risk early decisions and guide all iterations. |
+| **CRN-2** | Leverage organization tech stack     | Use the company’s standard stack and tooling (approved languages/frameworks, cloud platform, DB, messaging) to speed delivery and reduce ops risk. |
+| **CRN-3** | Team work allocation                 | Partition the system into ownable components/modules and map them to teams for parallel development and clear ownership. |
+| **CRN-4** | Unit & integration test coverage      | Set a minimum automated coverage target and harnesses (unit, contract, API, and integration tests) to keep change risk low. |
+| **CRN-5** | State management in replicas          | Define session/state strategy (stateless services, sticky sessions, shared cache) so active–active replicas behave correctly during failover. |
+| **CRN-6** | CI/CD & zero-downtime deploys         | Standardize pipelines (build, scan, test, canary/blue-green, rollback) to support frequent, low-risk releases. |
+| **CRN-7** | Observability & SLOs                  | Provide logs, metrics, traces, dashboards, and alerts with clear SLOs (latency, error rate, availability) for runtime visibility. |
+| **CRN-8** | Data governance & retention           | Apply company data classification, retention, backup/restore, and access policies for all PII and academic records. |
+| **CRN-9** | API standards & versioning            | Enforce API guidelines (REST/GraphQL style, schemas, versioning, backward compatibility) for internal and external integrations. |
+| **CRN-10** | Security baseline & secrets          | Meet org security baselines (SSO/OIDC, RBAC, encryption in transit/at rest, secret management, audit logging). |
+| **CRN-11** | Cost & capacity guardrails            | Track cloud cost, set quotas/auto-scaling policies, and define performance budgets to stay within the project’s budget. |
+| **CRN-12** | Documentation & onboarding            | Maintain living architecture docs (C4/context, interfaces, runbooks) to accelerate onboarding and cross-team collaboration. |
