@@ -59,7 +59,7 @@ The initial scope of AIDAP focuses on:
 
 Future iterations will expand functionality based on ADD decisions and architectural constraints.
 
-## Group - 26
+## Group 26
 
 - Pranav Ashok Chaudhari
 - Ivan Arudpiragasam
