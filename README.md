@@ -47,18 +47,22 @@ Instructor: Dr. Hani Sami
 	- Integration complexity with legacy systems and varying APIs.
 	- Cost vs latency trade-offs for AI model selection.
 
-## System Scope
+## How to contribute
 
-The initial scope of AIDAP focuses on:
+- Use GitHub Issues to propose tasks; link issues to KanBan project board for tracking.
+- Branching: create a branch per feature/issue and open a PR with linked issue(s).
+- Add UML diagrams and other artifacts to `/diagrams` and reference them from ADD iteration documents.
+- Keep documentation and design artifacts updated in the corresponding `ADD Iteration` folder.
 
-- Providing students access to course schedules, deadlines, announcements, and academic Q&A.
-- Enabling lecturers to publish course material and announcements.
-- Supporting administrators with monitoring and basic analytics.
-- Integrating with at least two institutional systems (e.g., LMS and calendar API).
+## Next steps (recommended)
 
-Future iterations will expand functionality based on ADD decisions and architectural constraints.
+1. Add UML artifacts to `/diagrams`: use-case diagram and a deployment diagram for the chosen reference architecture (I can add PlantUML sources if you want).
+2. Finalize ADD Iteration 1: component diagram, interface contracts for connectors, mapping of tactics to quality attributes.
+3. Prepare a branch + PR for instructor review when ready.
 
-## Group - 26
-Pranav Ashok Chaudhari
-Ivan Arudpiragasam
-Ahmad Almaraee
+---
+
+If you want, I can now:
+
+- add a `diagrams/` folder and drop in PlantUML sources for a use-case and deployment diagram, or
+- go ahead and draft ADD Iteration 1 artifacts (components, interfaces, deployment) in `ADD Iteration 1/`.
