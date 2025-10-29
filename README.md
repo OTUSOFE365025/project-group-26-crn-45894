@@ -33,7 +33,6 @@ Instructor: Dr. Hani Sami
 - `Constraints.md` — system constraints and implementation constraints.
 - `Concerns.md` — architectural concerns and trade-offs to drive ADD.
 - `ADD Iteration 1/` `ADD Iteration 2/` `ADD Iteration 3/` — iteration artifacts (kept for later ADD work).
-- `diagrams/` — place UML (use-case, component, deployment) and images here (add files as PNG/SVG/PlantUML).
 
 ## Business case (brief)
 
