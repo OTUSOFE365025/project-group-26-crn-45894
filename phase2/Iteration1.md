@@ -155,19 +155,20 @@ Target cloud deployment (e.g., Kubernetes or managed services):
 
 Summary of how the iteration addressed drivers (similar to the FCAPS Kanban table):
 
-| Driver                                  | Status                      | Notes                                                                                                                 |
-| --------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| UC-1 Ask question                       | **Partially addressed**     | Conversation Orchestrator and client UIs identified; detailed flows left for Iteration 2.                             |
-| UC-2 Notifications                      | **Partially addressed**     | Notification Service and message queue identified.                                                                    |
-| UC-3 Dashboard                          | **Partially addressed**     | Dashboard UI and Analytics Service identified.                                                                        |
-| UC-4 Manage integrations                | **Partially addressed**     | Integration Services and Admin UI identified.                                                                         |
-| UC-5 Maintain system                    | **Partially addressed**     | Monitoring & Logging stack and Maintainer dashboard identified.                                                       |
-| Performance (≤ 2s)                      | **Partially addressed**     | 3-tier structure and dedicated services support scaling; detailed performance tactics handled later.                  |
-| Availability (99.5%)                    | **Partially addressed**     | Cloud deployment, load balancer, and message broker planned; replication and fail-over details in later iterations.   |
-| Security & privacy                      | **Partially addressed**     | Dedicated Auth & Access Control service and separation of concerns defined.                                           |
-| Scalability                             | **Partially addressed**     | Service-based architecture and stateless design support horizontal scaling.                                           |
-| Usability                               | **Partially addressed**     | Rich web/mobile client layer identified; detailed UI design out of scope for this iteration.                          |
-| Constraints (integration, cloud-native) | **Addressed at high level** | External integration services and cloud deployment pattern selected.                                                  |
-| Concerns CRN-1/CRN-2/CRN-3              | **Partially addressed**     | Overall structure, main modules, and separable areas of work established; detailed module assignments in Iteration 2. |
+| Driver                                  | Status                   | Notes                                                                                                                 |
+| --------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| UC-1 Ask question                       | **Partially Addressed**  | Conversation Orchestrator and client UIs identified; detailed flows scheduled for Iteration 2.                         |
+| UC-2 Notifications                      | **Partially Addressed**  | Notification Service and message queue identified; implementation details to follow.                                   |
+| UC-3 Dashboard                          | **Not Addressed**        | Dashboard UI and Analytics Service identified conceptually; no implementation yet.                                     |
+| UC-4 Manage integrations                | **Partially Addressed**  | Integration Services and Admin UI identified; integration patterns to be refined in Iteration 2.                       |
+| UC-5 Maintain system                    | **Not Addressed**        | Monitoring & Logging stack identified but not implemented.                                                            |
+| Performance (≤ 2s)                      | **Partially Addressed**  | 3-tier structure supports scaling; detailed performance tactics to be implemented.                                    |
+| Availability (99.5%)                    | **Partially Addressed**  | Cloud deployment planned; replication and fail-over to be implemented later.                                         |
+| Security & privacy                      | **Partially Addressed**  | Auth & Access Control service defined; enforcement pending.                                                           |
+| Scalability                             | **Completely Addressed** | Service-based architecture and stateless design support horizontal scaling.                                           |
+| Usability                               | **Not Addressed**        | Rich web/mobile client layer identified; detailed UI/UX design not started.                                          |
+| Constraints (integration, cloud-native) | **Completely Addressed** | External integration services and cloud deployment pattern selected.                                                  |
+| Concerns CRN-1/CRN-2/CRN-3              | **Partially Addressed**  | Overall structure established; detailed module assignments pending.                                                  |
+
 
 The main outcome of Iteration 1 is a coherent high-level architecture that can now be refined into domain-level components and interfaces in Iteration 2.
