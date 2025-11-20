@@ -74,13 +74,13 @@ You can draw the UML class diagram with these entities and commit it as an image
 
 ### 4.2 Mapping Use Cases to Domain Objects
 
-| Use Case | Main Domain Objects |
-|----------|---------------------|
-| UC-1 Ask AIDAP a question | User, ConversationSession, Message, ScheduleItem, IntegrationConfig |
-| UC-2 Receive notifications | User, NotificationRule, ScheduleItem, IntegrationConfig |
-| UC-3 View personalized dashboard | User, ScheduleItem, UsageMetric |
-| UC-4 Manage institutional integrations | IntegrationConfig |
-| UC-5 Maintain system health | UsageMetric, IntegrationConfig |
+| Use Case                               | Main Domain Objects                                                 |
+| -------------------------------------- | ------------------------------------------------------------------- |
+| UC-1 Ask AIDAP a question              | User, ConversationSession, Message, ScheduleItem, IntegrationConfig |
+| UC-2 Receive notifications             | User, NotificationRule, ScheduleItem, IntegrationConfig             |
+| UC-3 View personalized dashboard       | User, ScheduleItem, UsageMetric                                     |
+| UC-4 Manage institutional integrations | IntegrationConfig                                                   |
+| UC-5 Maintain system health            | UsageMetric, IntegrationConfig                                      |
 
 ### 4.3 Decomposition into Modules
 
@@ -157,7 +157,34 @@ Each adapter exposes a uniform interface (e.g., `getSchedule(userId)`, `getAnnou
 
 ---
 
-## 5. Step 6 – Interfaces and Example Flows
+## 5. Step 6 – Views, Interfaces, and Example Flows
+
+The system has five primary use cases (UC-1 … UC-5). By default, one sequence diagram
+per use case would be expected. In this iteration we instead show **three** sequence
+diagrams (UC-1, UC-2, UC-3) and omit separate diagrams for UC-4 and UC-5. The reason is
+that the three selected use cases already exercise all of the distinct architectural
+mechanisms introduced in this design:
+
+- **UC-1 – Ask AIDAP a question** shows the synchronous conversational flow through the
+  Chat UI, Conversation API/Service, intent handling, repositories, and LMS/Calendar
+  adapters. This is the core student interaction and drives most performance
+  requirements.
+- **UC-2 – Receive notifications** shows asynchronous processing using Notification
+  Service, a message queue, background worker, email adapter, and notification logging.
+  This covers background work, availability, and reliability concerns.
+- **UC-3 – View personalized dashboard** shows how Analytics Service aggregates schedule
+  data and usage metrics to build the dashboard view, which is representative of other
+  read-heavy features.
+
+The remaining use cases:
+
+- **UC-4 – Manage integrations (Admin)** and
+- **UC-5 – Maintain system health (Maintainer)**
+
+reuse the same architectural patterns already illustrated (API → Service → Repository,
+and Monitoring/Logging). They do not introduce any new components or message types
+beyond those shown in UC-1…UC-3. Adding two more sequence diagrams would therefore be
+redundant, so these use cases are described textually rather than diagrammed.
 
 ### 5.1 Example Sequence – UC-1: Ask AIDAP “When is my next exam?”
 
@@ -203,27 +230,27 @@ interface CalendarAdapter {
 
 ### 5.3 Example Sequence – UC-2: Notification for Assignment Deadline
 
-1. `NotificationService` periodically queries `ScheduleItem` data via **LmsAdapter** and **CalendarAdapter**.  
-2. For each upcoming deadline matching a user's **NotificationRule**, it creates a job in the **Message Queue**.  
-3. `NotificationWorker` consumes jobs, formats notification messages, and dispatches via **EmailAdapter** or push notification channel.  
-4. Sent notifications are recorded in `NotificationLogRepository`.  
+1. `NotificationService` periodically queries `ScheduleItem` data via **LmsAdapter** and **CalendarAdapter**.
+2. For each upcoming deadline matching a user's **NotificationRule**, it creates a job in the **Message Queue**.
+3. `NotificationWorker` consumes jobs, formats notification messages, and dispatches via **EmailAdapter** or push notification channel.
+4. Sent notifications are recorded in `NotificationLogRepository`.
 5. Dashboard UI retrieves logs for display via `AnalyticsService`.
 
-*A full UML sequence diagram is included in `/phase2/diagrams/sequence_uc2_iter2.puml`.*
+_A full UML sequence diagram is included in `/phase2/diagrams/sequence_uc2_iter2.puml`._
 
 # 6. Step 7 – Analysis and Work Allocation
 
 ## 6.1 Driver Coverage
 
-| Driver | Status | Notes |
-|--------|--------|-------|
-| **UC-1 Ask question** | **Completely Addressed** | Domain model, modules, and full flow defined. |
-| **UC-2 Notifications** | **Completely Addressed** | Rules, services, adapters, and worker defined. |
-| **UC-3 Dashboard** | **Partially Addressed** | Analytics services identified; UI left for later iterations. |
-| **UC-4 Manage integrations** | **Completely Addressed** | IntegrationConfig + adapters fully defined. |
-| **UC-5 System health** | **Partially Addressed** | Monitoring & analytics modules identified. |
-| **Performance & scalability** | **Partially Addressed** | Stateless services + adapters support scaling; caching/TLS tuning later. |
-| **Modifiability** | **Completely Addressed** | Adapter pattern enables new integrations/models easily. |
-| **Security** | **Partially Addressed** | Auth & Access Control assumed; detailed RBAC in later iteration. |
-| **CRN-3 Work allocation** | **Completely Addressed** | Each module can be assigned to a separate team member. |
-| **CRN-4 Testability** | **Partially Addressed** | Repositories and interfaces support testing; full test strategy comes later. |
+| Driver                        | Status                   | Notes                                                                        |
+| ----------------------------- | ------------------------ | ---------------------------------------------------------------------------- |
+| **UC-1 Ask question**         | **Completely Addressed** | Domain model, modules, and full flow defined.                                |
+| **UC-2 Notifications**        | **Completely Addressed** | Rules, services, adapters, and worker defined.                               |
+| **UC-3 Dashboard**            | **Partially Addressed**  | Analytics services identified; UI left for later iterations.                 |
+| **UC-4 Manage integrations**  | **Completely Addressed** | IntegrationConfig + adapters fully defined.                                  |
+| **UC-5 System health**        | **Partially Addressed**  | Monitoring & analytics modules identified.                                   |
+| **Performance & scalability** | **Partially Addressed**  | Stateless services + adapters support scaling; caching/TLS tuning later.     |
+| **Modifiability**             | **Completely Addressed** | Adapter pattern enables new integrations/models easily.                      |
+| **Security**                  | **Partially Addressed**  | Auth & Access Control assumed; detailed RBAC in later iteration.             |
+| **CRN-3 Work allocation**     | **Completely Addressed** | Each module can be assigned to a separate team member.                       |
+| **CRN-4 Testability**         | **Partially Addressed**  | Repositories and interfaces support testing; full test strategy comes later. |
