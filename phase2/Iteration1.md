@@ -20,11 +20,11 @@ From Phase 1, the key drivers considered in this iteration are:
 
 ### Quality Attribute Scenarios
 
-- **Performance** – AIDAP should respond to typical queries within **2 seconds** on average (RS10, QA-P1).
-- **Availability** – AIDAP should be available **99.5%** of the time per month and support automatic fail-over (RS11, RA6, QA-A1).
-- **Scalability** – Support up to **5,000 concurrent users** (RA7, QA-S1).
-- **Security** – Protect user data, enforce SSO, and ensure only authorized access to personal and course data (R8, RS7, RS8, RA5, QA-Sec1).
-- **Usability** – Provide an intuitive conversational UI usable by non-technical users (RS12, QA-U1).
+- **Performance (High Priority)** – AIDAP should respond to typical queries within **2 seconds** on average (RS10, QA-P1).
+- **Availability (High Priority)** – AIDAP should be available **99.5%** of the time per month and support automatic fail-over (RS11, RA6, QA-A1).
+- **Scalability (Medium Priority)** – Support up to **5,000 concurrent users** (RA7, QA-S1).
+- **Security (High Priority)** – Protect user data, enforce SSO, and ensure only authorized access to personal and course data (R8, RS7, RS8, RA5, QA-Sec1).
+- **Usability (Medium Priority)** – Provide an intuitive conversational UI usable by non-technical users (RS12, QA-U1).
 
 ### Constraints
 
