@@ -169,9 +169,11 @@ mechanisms introduced in this design:
   Chat UI, Conversation API/Service, intent handling, repositories, and LMS/Calendar
   adapters. This is the core student interaction and drives most performance
   requirements.
+
 - **UC-2 – Receive notifications** shows asynchronous processing using Notification
   Service, a message queue, background worker, email adapter, and notification logging.
   This covers background work, availability, and reliability concerns.
+
 - **UC-3 – View personalized dashboard** shows how Analytics Service aggregates schedule
   data and usage metrics to build the dashboard view, which is representative of other
   read-heavy features.
