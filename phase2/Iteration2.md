@@ -217,13 +217,13 @@ interface CalendarAdapter {
 
 | Driver | Status | Notes |
 |--------|--------|-------|
-| **UC-1 Ask question** | Mostly addressed | Domain model, modules, and full flow defined. |
-| **UC-2 Notifications** | Mostly addressed | Rules, services, adapters, and worker defined. |
-| **UC-3 Dashboard** | Partially addressed | Analytics services identified; UI left for later iterations. |
-| **UC-4 Manage integrations** | Mostly addressed | IntegrationConfig + adapters fully defined. |
-| **UC-5 System health** | Partially addressed | Monitoring & analytics modules identified. |
-| **Performance & scalability** | Partially addressed | Stateless services + adapters support scaling; caching/TLS tuning later. |
-| **Modifiability** | Well supported | Adapter pattern enables new integrations/models easily. |
-| **Security** | Partially addressed | Auth & Access Control assumed; detailed RBAC in later iteration. |
-| **CRN-3 Work allocation** | Addressed | Each module can be assigned to a separate team member. |
-| **CRN-4 Testability** | Partially addressed | Repositories and interfaces support testing; full test strategy comes later. |
+| **UC-1 Ask question** | **Completely Addressed** | Domain model, modules, and full flow defined. |
+| **UC-2 Notifications** | **Completely Addressed** | Rules, services, adapters, and worker defined. |
+| **UC-3 Dashboard** | **Partially Addressed** | Analytics services identified; UI left for later iterations. |
+| **UC-4 Manage integrations** | **Completely Addressed** | IntegrationConfig + adapters fully defined. |
+| **UC-5 System health** | **Partially Addressed** | Monitoring & analytics modules identified. |
+| **Performance & scalability** | **Partially Addressed** | Stateless services + adapters support scaling; caching/TLS tuning later. |
+| **Modifiability** | **Completely Addressed** | Adapter pattern enables new integrations/models easily. |
+| **Security** | **Partially Addressed** | Auth & Access Control assumed; detailed RBAC in later iteration. |
+| **CRN-3 Work allocation** | **Completely Addressed** | Each module can be assigned to a separate team member. |
+| **CRN-4 Testability** | **Partially Addressed** | Repositories and interfaces support testing; full test strategy comes later. |
