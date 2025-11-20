@@ -69,6 +69,34 @@ This is a greenfield architecture. The element being refined is the **entire AID
 | **Use a Web / Rich Internet Application architecture for user-facing clients.** | Allows students, lecturers, and admins to use AIDAP through browsers and mobile apps while still providing rich, responsive UIs (chat window, dashboards).                                    | Traditional server-side web pages only – would limit responsiveness and conversational UX.             |
 | **Use a 3-tier deployment pattern (client, application, data).**                | Clean separation of concerns: UI layer, application/AI layer, and persistence/integration layer. Supports availability and scalability via independent scaling of application and data tiers. | 2-tier architecture – would mix business logic with data access and reduce scalability.                |
 
+## Frameworks Used
+
+- **Dependency Injection Framework**
+  - Used for Inversion of Control (IoC) and automatic service wiring.
+  - Examples: Spring DI, .NET Dependency Injection, NestJS DI.
+
+- **API / Backend Framework**
+  - Used to build the Service Application backend (REST APIs).
+  - Examples: Spring Boot, ASP.NET Web API, Express.js.
+
+- **Repository / ORM Framework**
+  - Implements the Repository pattern and handles database persistence.
+  - Examples: Hibernate (JPA), Entity Framework, Prisma ORM.
+
+- **Frontend Framework**
+  - Supports the Rich Internet Application (RIA) architecture for student/lecturer/admin clients.
+  - Examples: React, Angular, Vue.
+
+- **Message Queue Framework**
+  - Used for asynchronous jobs like notifications and scheduling.
+  - Examples: RabbitMQ, Apache Kafka.
+
+- **Security & Logging Frameworks**
+  - Used for authentication, authorization, and audit logging.
+  - Examples: JWT / OAuth libraries, Serilog, Winston.
+
+
+
 ### 4.2 Cross-Cutting Concepts
 
 - **API Gateway / Load Balancer** for routing external traffic to AIDAP services and supporting scaling and fail-over.
