@@ -34,7 +34,7 @@ Implements **ADD Iteration 2**, covering:
 
 ---
 
-## **3. diagrams/**  
+## **3. Diagrams**  
 Contains all diagrams for Iterations 1 & 2:
 - Context Diagram  
 - Logical View – Iteration 1  
