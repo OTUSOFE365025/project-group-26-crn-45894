@@ -7,7 +7,7 @@ logical views, deployment views, scenarios, and refinement steps.
 
 ---
 
-## 📄 Contents
+## Contents
 
 ### **1. Iteration1.md**  
 Implements **ADD Iteration 1**, covering:
@@ -34,7 +34,7 @@ Implements **ADD Iteration 2**, covering:
 
 ---
 
-## 🖼️ **3. diagrams/**  
+## **3. diagrams/**  
 Contains all diagrams for Iterations 1 & 2:
 - Context Diagram  
 - Logical View – Iteration 1  
@@ -49,7 +49,7 @@ All diagrams were generated from **PlantUML (.puml)** files so they can be easil
 
 ---
 
-## ✔ Addressing Phase 1 Feedback
+## Addressing Phase 1 Feedback
 
 Based on the rubric and TA comments:
 
@@ -64,14 +64,14 @@ Phase 2 ensures:
 
 ---
 
-## 🔍 How to View the Files
+## How to View the Files
 - Markdown files render directly in GitHub  
 - PlantUML files can be viewed using any UML extension or on:  
   https://www.plantuml.com/plantuml
 
 ---
 
-## 📘 Summary  
+## Summary  
 Phase 2 provides a complete architectural foundation for AIDAP using the **ADD method**.  
 It extends Phase 1 by adding structure, refinement, domain modeling, component interactions,  
 and sequence logic necessary for implementation.
