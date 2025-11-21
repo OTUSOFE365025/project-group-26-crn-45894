@@ -240,6 +240,20 @@ interface CalendarAdapter {
 
 _A full UML sequence diagram is included in `/phase2/diagrams/sequence_uc2_iter2.puml`._
 
+### 5.4 Example Sequence – UC-3: View Personalized Dashboard
+
+_Textual sequence:_
+
+1. **Student** opens the `DashboardView`.
+2. `DashboardController` invokes `AnalyticsService.getDashboardData(userId)`.
+3. `AnalyticsService` retrieves required data:
+   - Loads recent user activity and performance metrics from `UsageMetricRepository`.
+   - Retrieves conversation summaries and notification rule data through `ConversationRepository` and `NotificationRuleRepository`.
+4. `AnalyticsService` calls **LmsAdapter** and **CalendarAdapter** to fetch upcoming schedule items (lectures, labs, exams, assignments).
+5. `AnalyticsService` aggregates all retrieved information into a unified `DashboardDTO`.
+6. `DashboardController` returns the aggregated dashboard data to `DashboardView`.
+7. `DashboardView` renders personalized charts, upcoming deadlines, notifications, and usage metrics for the Student.
+
 # 6. Step 7 – Analysis and Work Allocation
 
 ## 6.1 Driver Coverage
