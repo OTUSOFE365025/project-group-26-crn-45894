@@ -77,6 +77,7 @@ Phase 2 provides a complete architectural foundation for AIDAP using the **ADD m
 It extends Phase 1 by adding structure, refinement, domain modeling, component interactions,  
 and sequence logic necessary for implementation.
 
+---
 
 ## Group 26
 
