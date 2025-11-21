@@ -9,7 +9,7 @@ logical views, deployment views, scenarios, and refinement steps.
 
 ## 📄 Contents
 
-### **1. iteration1.md**  
+### **1. Iteration1.md**  
 Implements **ADD Iteration 1**, covering:
 - Selected design drivers  
 - Primary use cases  
@@ -21,7 +21,7 @@ Implements **ADD Iteration 1**, covering:
 - Deployment View – Iteration 1  
 - Analysis of current design
 
-### **2. iteration2.md**  
+### **2. Iteration2.md**  
 Implements **ADD Iteration 2**, covering:
 - Refinement of architectural elements  
 - Domain model  
@@ -34,7 +34,7 @@ Implements **ADD Iteration 2**, covering:
 
 ---
 
-## 🖼️ **3. diagrams/phase2/**  
+## 🖼️ **3. diagrams/**  
 Contains all diagrams for Iterations 1 & 2:
 - Context Diagram  
 - Logical View – Iteration 1  
