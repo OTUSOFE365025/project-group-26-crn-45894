@@ -2,7 +2,7 @@
 
 This folder contains the deliverables for **Phase 3** of the AIDAP project, based on the updated requirements from the instructor.
 
-Deliverables included:
+## Deliverables included:
 
 1. **ADD Iteration 3** – refinement of the architecture focusing on three quality attributes:
 
