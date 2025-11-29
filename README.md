@@ -15,6 +15,18 @@ This folder contains the deliverables for **Phase 3** of the AIDAP project, base
    - ATAM Risk Assessment Table
    - Description of risks, non-risks, sensitivity points, and tradeoffs
 
+## 📊 Diagrams
+
+The following PlantUML diagrams are included to support the ADD Iteration 3 and ATAM analysis:
+
+- **Deployment Diagram**  
+  `diagrams/aidap-phase3-deployment.puml`  
+  Shows the infrastructure layout (gateway, app nodes, cache, DB primary/replica, message broker, SSO, monitoring).
+
+- **UC-1 Sequence Diagram**  
+  `diagrams/aidap-phase3-sequence-next-exam.puml`  
+  Illustrates the runtime behaviour for “When is my next exam?” including caching logic and parallel adapter calls.
+
 No implementation or code is required for this phase.  
 Please refer to:
 
