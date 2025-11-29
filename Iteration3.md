@@ -37,43 +37,23 @@ We refine the following elements from earlier iterations:
 
 These elements have the biggest impact on performance, availability, and security for typical queries such as _“When is my next exam?”_ and for deadline notifications.
 
+**Rationale for choosing these elements:**  
+These components were selected because they directly affect the three quality attributes driving this iteration—**performance**, **availability**, and **security/privacy**. The API Gateway, App Nodes, and Cache are central to meeting the 2-second response-time requirement. The replicated App Nodes, Message Broker, and DB Replicas are essential for achieving high availability and fault tolerance. The SSO Adapter, Audit Logger, and ConversationService are the primary enforcement points for authentication, authorization, and privacy constraints. These elements therefore represent the parts of the architecture most impacted by the required quality improvements and are the natural focus of refinement in this iteration.
+
 ---
 
-## Step 4 – Select Architectural Concepts and Tactics
+## Step 4 – Design Decisions and Tactics Used
 
-### 4.1 Availability tactics
-
-- **Redundancy and replication**
-  - Deploy multiple stateless **AIDAP App Nodes** behind a load balancer.
-  - Use **DB primary + read replica** with automated fail-over.
-- **Health monitoring / restart**
-  - Health checks from the load balancer and monitoring service restart unhealthy instances.
-- **Backup and restore**
-  - Nightly backups of critical databases and conversation history; tested recovery procedures.
-
-### 4.2 Performance tactics
-
-- **Introduce concurrency**
-  - External calls (LMS, Calendar, etc.) are executed in parallel in `ScheduleQueryHandler`.
-- **Introduce caching**
-  - `Conversation Cache` storing recent schedules, upcoming assessments, and conversation context.
-- **Manage resources**
-  - DB connection pooling.
-  - Use of a **message broker** to handle asynchronous notification work so interactive queries are not blocked.
-- **Resource scheduling**
-  - Background analytics jobs run with lower priority than interactive chat traffic.
-
-### 4.3 Security & Privacy tactics
-
-- **Authenticate at the perimeter**
-  - All requests go through an **API Gateway** that integrates with institutional **SSO**.
-- **Authorize centrally**
-  - `Auth / SSO Adapter` exposes identity + roles (Student, Instructor, Admin, Maintainer).
-  - `ConversationService` enforces access rules (e.g., students can only see their own data).
-- **Encrypt communication and sensitive data**
-  - TLS for all network links; encryption at rest for selected columns (tokens, IDs).
-- **Record and monitor security events**
-  - `Security Audit Logger` records login, access to private data, admin operations.
+| Design Decisions and Location | Rationale and Assumptions |
+|------------------------------|---------------------------|
+| **Replicate AIDAP App Nodes using active redundancy** | Replicating the application nodes allows the system to tolerate failures of a single node without service interruption. This supports availability requirements (RS11, RA6). Load can also be distributed to improve performance under peak usage. |
+| **Introduce a load-balancing mechanism at the API Gateway** | A load balancer distributes traffic evenly across replicated App Nodes, improving responsiveness and ensuring no single node becomes a bottleneck. Technology-supported load balancing avoids custom solutions and increases reliability. |
+| **Deploy a Message Broker on a separate node** | Separating the notification pipeline ensures that failure of the main application nodes does not interfere with delivery of notifications or background tasks. A queue also ensures ordered and reliable message processing. |
+| **Use a DB Primary + Read Replica deployment strategy** | The read replica improves performance by offloading read-heavy workloads, while the primary handles writes. Replication supports fail-over and improves availability. |
+| **Introduce a Conversation Cache (Redis)** | Frequently accessed data such as upcoming assessments or recent conversation context can be cached to reduce latency and meet the 2-second response-time requirement. |
+| **Enforce SSO authentication at the Gateway boundary** | Ensuring authentication occurs at the perimeter prevents unauthorized access and reduces the risk of bypassing access controls. This strengthens security/privacy compliance. |
+| **Add a Security Audit Logger** | Logging access attempts, SSO validations, and sensitive data interactions supports auditing requirements and detection of anomalies. Assumes sufficient storage and log rotation policies. |
+| **Integrate Monitoring & Alerting** | Provides continuous observation of latency, failure rates, node health, and external API availability. Needed to validate that performance and availability requirements are being met in real time. |
 
 ---
 
