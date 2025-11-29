@@ -15,7 +15,7 @@ This folder contains the deliverables for **Phase 3** of the AIDAP project, base
    - ATAM Risk Assessment Table
    - Description of risks, non-risks, sensitivity points, and tradeoffs
 
-## 📊 Diagrams
+## Diagrams
 
 The following PlantUML diagrams are included to support the ADD Iteration 3 and ATAM analysis:
 
@@ -30,8 +30,8 @@ The following PlantUML diagrams are included to support the ADD Iteration 3 and 
 No implementation or code is required for this phase.  
 Please refer to:
 
-- `add-iteration3.md`
-- `atam-assessment.md`
+- `Iteration3.md`
+- `ATAM-Assessment.md`
 
 These documents follow the structure used earlier in Phases 1–2 and align with the FCAPS Case Example provided by the instructor.
 
