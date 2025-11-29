@@ -38,7 +38,7 @@ We refine the following elements from earlier iterations:
 These elements have the biggest impact on performance, availability, and security for typical queries such as _“When is my next exam?”_ and for deadline notifications.
 
 **Rationale for choosing these elements:**  
-These components were selected because they directly affect the three quality attributes driving this iteration—**performance**, **availability**, and **security/privacy**. The API Gateway, App Nodes, and Cache are central to meeting the 2-second response-time requirement. The replicated App Nodes, Message Broker, and DB Replicas are essential for achieving high availability and fault tolerance. The SSO Adapter, Audit Logger, and ConversationService are the primary enforcement points for authentication, authorization, and privacy constraints. These elements therefore represent the parts of the architecture most impacted by the required quality improvements and are the natural focus of refinement in this iteration.
+These components were selected because they directly affect the three quality attributes driving this iteration which are **performance**, **availability**, and **security/privacy**. The API Gateway, App Nodes, and Cache are central to meeting the 2-second response-time requirement. The replicated App Nodes, Message Broker, and DB Replicas are essential for achieving high availability and fault tolerance. The SSO Adapter, Audit Logger, and ConversationService are the primary enforcement points for authentication, authorization, and privacy constraints. These elements therefore represent the parts of the architecture most impacted by the required quality improvements and are the natural focus of refinement in this iteration.
 
 ---
 
