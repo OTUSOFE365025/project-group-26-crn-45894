@@ -77,10 +77,10 @@ Utility
 
 | Architecture Decision         | Sensitivity | Tradeoff | Risk | Nonrisk |
 |------------------------------|-------------|----------|------|---------|
-| AD1 Microservices + K8s      | R6          | R7       | R1   | R2      |
-| AD2 API Gateway + OIDC SSO   | R6, R8      | R8       | R3   | R5      |
-| AD3 Vector DB + RAG          | R6          |          |      |         |
-| AD4 Kafka for async workflows|             | R7       |      |         |
+| AD1 Microservices + K8s      | S1          | T1       | R1   | N1      |
+| AD2 API Gateway + OIDC SSO   | S1          | T2       | R2   | N2      |
+| AD3 Vector DB + RAG          | S1          |          |      |         |
+| AD4 Kafka for async workflows|             | T1       |      |         |
 
 
 ---
